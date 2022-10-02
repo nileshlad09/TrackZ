@@ -9,6 +9,9 @@ import View from './Components/JS/View'
 import Notification from './Components/JS/Notification'
 import ProfileService from './Components/JS/ProfileService'
 import ProfileUser from './Components/JS/ProfileUser'
+import About from './Components/JS/About'
+import Service from './Components/JS/Service'
+import Contact from './Components/JS/Contact'
 import {Switch,Route} from 'react-router-dom'
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
       <Navbar />
       <Switch>
      <Route exact path="/"><Home/></Route> 
+     <Route exact path="/About"><About/></Route> 
+     <Route exact path="/Contact"><Contact/></Route> 
+     <Route exact path="/Service"><Service/></Route> 
      <Route exact path="/SimpleUser"><SimpleUser/></Route>
      <Route exact path="/Admin"><Admin/></Route>
      <Route exact path="/CommanLogin"><CommanLogin/></Route>

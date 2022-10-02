@@ -27,9 +27,9 @@ const Navbar = () => {
             <Link to='Home' className="nav-logo"><span >TrackZ</span></Link>
             <div className={`nav-items ${isOpen && "open"}`}>
                 <NavLink to="/" onClick={() => setIsOpen(!isOpen)}>Home <i><FcHome /></i> </NavLink>
-                <Link to="About" onClick={() => setIsOpen(!isOpen)}>About <i><FcAbout /></i></Link>
-                <Link to="Service" onClick={() => setIsOpen(!isOpen)}>Service <i><AiOutlineCustomerService /></i></Link>
-                <Link to="Contact" onClick={() => setIsOpen(!isOpen)}>Contact <i><MdContactPage /></i></Link>
+                <NavLink to="/About" onClick={() => setIsOpen(!isOpen)}>About <i><FcAbout /></i></NavLink>
+                <NavLink to="/Service" onClick={() => setIsOpen(!isOpen)}>Service <i><AiOutlineCustomerService /></i></NavLink>
+                <NavLink to="/Contact" onClick={() => setIsOpen(!isOpen)}>Contact <i><MdContactPage /></i></NavLink>
                 <NavLink to="/SimpleUser" onClick={() => setIsOpen(!isOpen)}>SignUp<i><BiLogIn /></i></NavLink>
                 <NavLink to="/Notification" onClick={() => setIsOpen(!isOpen)}>
                     Notification<Badge badgeContent={4} color="primary">

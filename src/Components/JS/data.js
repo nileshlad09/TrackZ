@@ -1,6 +1,6 @@
-import i4 from './images/i4.jpg'
-import i5 from './images/i5 - Copy.jpg'
-import i6 from './images/i6.jpg';
+import i4 from '../images/i4.jpg'
+import i5 from '../images/i5 - Copy.jpg'
+import i6 from '../images/i6.jpg';
 
 const data = [
     {

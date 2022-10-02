@@ -12,6 +12,7 @@ import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import {Link} from 'react-scroll'
 import Tooltip from '@mui/material/Tooltip';
+import BanarImage from '../images/BanarImage.png'
 // import Navbar from './Navbar.js'
 function Home() {
   useEffect(() => {
@@ -41,7 +42,7 @@ function Home() {
           <h4 style={{ textDecoration: "none", listStyle: "none" }} data-aos="flip-right"><NavLink to="/" id="order">Lern More</NavLink></h4>
         </div>
         <div className="image">
-          <img src="https://tse4.mm.bing.net/th?id=OIP.9qbZY-Nqj4UbNDFfScLSoAHaFe&pid=Api&P=0" data-aos="fade-left" alt="" srcset="" />
+          <img src={BanarImage} data-aos="fade-left" />
         </div>
       </header>
       <Link to='Navbar'>
