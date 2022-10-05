@@ -18,7 +18,7 @@ function App() {
     <div>
       <Navbar />
       <Switch>
-     <Route exact path="/"><Home/></Route> 
+     <Route exact path="/TrackZ"><Home/></Route> 
      <Route exact path="/About"><About/></Route> 
      <Route exact path="/Contact"><Contact/></Route> 
      <Route exact path="/Service"><Service/></Route> 

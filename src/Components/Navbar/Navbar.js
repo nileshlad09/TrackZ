@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className="Navbar" id="Navbar">
             <Link to='Home' className="nav-logo"><span >TrackZ</span></Link>
             <div className={`nav-items ${isOpen && "open"}`}>
-                <NavLink to="/" onClick={() => setIsOpen(!isOpen)}>Home <i><FcHome /></i> </NavLink>
+                <NavLink to="/TrackZ" onClick={() => setIsOpen(!isOpen)}>Home <i><FcHome /></i> </NavLink>
                 <NavLink to="/About" onClick={() => setIsOpen(!isOpen)}>About <i><FcAbout /></i></NavLink>
                 <NavLink to="/Service" onClick={() => setIsOpen(!isOpen)}>Service <i><AiOutlineCustomerService /></i></NavLink>
                 <NavLink to="/Contact" onClick={() => setIsOpen(!isOpen)}>Contact <i><MdContactPage /></i></NavLink>
