@@ -1,4 +1,3 @@
-
 .containerss{
 	max-width: 1170px;
 	margin:auto;
@@ -11,8 +10,7 @@ ul{
 	list-style: none;
 }
 .footer{
-	/* background-color: #24262b; */
-    background-color: rgb(4, 4, 90);
+background-color: black;
     padding: 70px 0;
 }
 .footer-col{
@@ -37,6 +35,9 @@ ul{
 	height: 2px;
 	box-sizing: border-box;
 	width: 50px;
+}
+.footer-col ul{
+	padding-left: 0;
 }
 .footer-col ul li:not(:last-child){
 	margin-bottom: 10px;

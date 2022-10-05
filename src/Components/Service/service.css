@@ -1,0 +1,20 @@
+.ServiceContainer{
+    padding: 90px 0;
+}
+.ServiceContainer .serviceCard{
+    background-color: black;
+    color: white;
+    padding: 0 10px;
+}
+.ServiceContainer .viewBtn{
+    background-color: white;
+    padding: 8px 25px;
+}
+.ServiceContainer .viewBtn .btn2{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.css-83ijpv-MuiTypography-root{
+    color: white;
+}

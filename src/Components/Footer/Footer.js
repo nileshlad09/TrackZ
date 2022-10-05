@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import '../CSS/Footer.css'
+import './Footer.css'
 import {Link} from 'react-router-dom'
 import {FcGoogle} from "react-icons/fc"
 import {BsFacebook} from 'react-icons/bs'

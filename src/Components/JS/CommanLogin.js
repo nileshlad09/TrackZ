@@ -2,7 +2,6 @@ import React from 'react'
 import { BsFillTelephonePlusFill } from 'react-icons/bs'
 import { RiLockPasswordFill } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
-import '../CSS/CommanLogin.css'
 function CommanLogin() {
   return (
     <div className='main' style={{ marginTop: "30px", padding: "5px" }}>

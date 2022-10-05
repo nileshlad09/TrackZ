@@ -6,12 +6,11 @@ import { AiOutlineCustomerService } from 'react-icons/ai'
 import { FcAbout } from 'react-icons/fc'
 import { FcHome } from 'react-icons/fc'
 import { BiLogIn } from 'react-icons/bi'
-import '../CSS/Navbar.css'
+import './Navbar.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
-// import { RiHtml5Line } from "react-icons/ri";
 
 
 
@@ -33,7 +32,7 @@ const Navbar = () => {
                 <NavLink to="/SimpleUser" onClick={() => setIsOpen(!isOpen)}>SignUp<i><BiLogIn /></i></NavLink>
                 <NavLink to="/Notification" onClick={() => setIsOpen(!isOpen)}>
                     Notification<Badge badgeContent={4} color="primary">
-                        <MailIcon color="action" />
+                        <MailIcon color="white" />
                     </Badge>
                 </NavLink>
                 <NavLink to="/ProfileUser" onClick={() => setIsOpen(!isOpen)}><b style={{height:"10px",width:"10px",borderRadius:"50%",backgroundColor:"orangered",padding:"7px"}}>NA</b></NavLink>

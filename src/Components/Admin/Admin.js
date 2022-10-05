@@ -1,5 +1,5 @@
 import React  from 'react'
-import '../CSS/Admin.css'
+import './Admin.css'
 import { BsPersonFill } from 'react-icons/bs'
 import { BsFillTelephonePlusFill } from 'react-icons/bs'
 import { RiLockPasswordFill } from 'react-icons/ri'

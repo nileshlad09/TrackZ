@@ -1,17 +1,17 @@
 
 import './App.css';
-import Navbar from './Components/JS/Navbar.js'
-import Home from './Components/JS/Home.js'
-import Admin from './Components/JS/Admin.js'
+import Navbar from './Components/Navbar/Navbar.js'
+import Home from './Components/Home/Home.js'
+import Admin from './Components/Admin/Admin.js'
 import SimpleUser from './Components/JS/SimpleUser'
 import CommanLogin from './Components/JS/CommanLogin'
 import View from './Components/JS/View'
 import Notification from './Components/JS/Notification'
 import ProfileService from './Components/JS/ProfileService'
 import ProfileUser from './Components/JS/ProfileUser'
-import About from './Components/JS/About'
-import Service from './Components/JS/Service'
-import Contact from './Components/JS/Contact'
+import About from './Components/About/About'
+import Service from './Components/Service/Service'
+import Contact from './Components/Contact/Contact'
 import {Switch,Route} from 'react-router-dom'
 function App() {
   return (
