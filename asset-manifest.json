@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/TrackZ/static/css/main.16fb7cf0.css",
+    "main.css": "/TrackZ/static/css/main.0c8f3643.css",
     "main.js": "/TrackZ/static/js/main.8a5e7377.js",
     "static/js/787.1225bf6c.chunk.js": "/TrackZ/static/js/787.1225bf6c.chunk.js",
     "static/media/AboutUSImg.png": "/TrackZ/static/media/AboutUSImg.bbbd578ce8f585b99564.png",
@@ -8,12 +8,12 @@
     "static/media/VegetableSeller.jpg": "/TrackZ/static/media/VegetableSeller.58871d5579bb5f81e57e.jpg",
     "static/media/OldnewspaperCollector.jpg": "/TrackZ/static/media/OldnewspaperCollector.1be0182cc43d277f067c.jpg",
     "index.html": "/TrackZ/index.html",
-    "main.16fb7cf0.css.map": "/TrackZ/static/css/main.16fb7cf0.css.map",
+    "main.0c8f3643.css.map": "/TrackZ/static/css/main.0c8f3643.css.map",
     "main.8a5e7377.js.map": "/TrackZ/static/js/main.8a5e7377.js.map",
     "787.1225bf6c.chunk.js.map": "/TrackZ/static/js/787.1225bf6c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.16fb7cf0.css",
+    "static/css/main.0c8f3643.css",
     "static/js/main.8a5e7377.js"
   ]
 }
