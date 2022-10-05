@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./About.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import AboutUSImg from "../images/AboutUSImg.png";
 function About() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -10,9 +11,9 @@ function About() {
     <div id="About" >
       <div className="sections">
         <div className="contain">
-          <div className="image-sections" data-aos="fade-left">
+          <div className="image-sections" data-aos="fade-right">
             <img
-              src="https://tse4.mm.bing.net/th?id=OIP.9qbZY-Nqj4UbNDFfScLSoAHaFe&pid=Api&P=0"
+              src={AboutUSImg}
               alt=""
               srcset=""
             />
@@ -22,7 +23,7 @@ function About() {
               <h1 data-aos="flip-left">About Us</h1>
             </div>
             <div className="contents" data-aos="fade-right">
-              <p data-aos="fade-right">
+              <p data-aos="fade-left">
                 While in search of customers many hawkers roam various places
                 still don't find customers hence their time and money both get
                 wasted to resolve this issue we have come up with the solution

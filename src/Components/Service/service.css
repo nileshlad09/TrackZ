@@ -5,6 +5,7 @@
     background-color: black;
     color: white;
     padding: 0 10px;
+    width: 350px;
 }
 .ServiceContainer .viewBtn{
     background-color: white;
@@ -16,5 +17,8 @@
     font-weight: bold;
 }
 .css-83ijpv-MuiTypography-root{
-    color: white;
+    color: rgba(245, 245, 245, 0.695) !important;
+}
+.btn-disable{
+    cursor: not-allowed;
 }

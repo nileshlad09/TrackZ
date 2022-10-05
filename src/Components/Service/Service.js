@@ -5,9 +5,10 @@ import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
-import data from "./data";
+import { data, data2 } from "./data";
 import { Link } from "react-router-dom";
 import './service.css'
+
 export default function RecipeReviewCard() {
   return (
     <div className="ServiceContainer" id="Service">
@@ -38,7 +39,7 @@ export default function RecipeReviewCard() {
                     </Avatar>
                   }
                   title={item.name}
-                  subheader="Service Avaliable"
+                  subheader={item.service}
                 />
                 <CardMedia
                   component="img"
@@ -49,6 +50,39 @@ export default function RecipeReviewCard() {
                 <CardActions disableSpacing>
                   <div className="viewBtn">
                     <Link className="btn2" to={"/View/" + item.name}>View</Link>
+                  </div>
+                </CardActions>
+              </Card>
+            </>
+          );
+        })}
+
+    {data2.map((item) => {
+          return (
+            <>
+              <Card
+              className="serviceCard"
+                sx={{ maxWidth: 345, margin: "20px" }}
+                data-aos={item.class}
+              >
+                <CardHeader
+                  avatar={
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                      {item.name.substring(0, 1)}
+                    </Avatar>
+                  }
+                  title={item.name}
+                  subheader={item.service}
+                />
+                <CardMedia
+                  component="img"
+                  height="194"
+                  image={item.Image}
+                  alt="Paella dish"
+                />
+                <CardActions disableSpacing>
+                  <div className="viewBtn">
+                    <Link className="btn2 btn-disable" >View</Link>
                   </div>
                 </CardActions>
               </Card>

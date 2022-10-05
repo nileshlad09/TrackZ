@@ -1,4 +1,3 @@
-
 *{
     padding: 0;
     margin: 0;
@@ -13,6 +12,17 @@
     justify-content: space-around;
     flex-wrap: wrap;
     color: #262626;
+}
+.head .HomeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
+.head .HomeBtn .btn{
+    background-color: black;
+    width: 120px;
 }
 .h-text{
     display: flex;
@@ -31,14 +41,14 @@
     margin: 0;
     font: 500 30px/35px Sans-serif;
 }
-.h-text .btn{
+/* .h-text .btn{
     margin-top: 10px;
     background: brown;
 }
 .h-text #order{
     color: #fff;
    text-decoration: none;
-}
+} */
 .image{
     height: 500px;
     width: 500px;

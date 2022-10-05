@@ -39,13 +39,14 @@ function Home() {
             <p data-aos="fade-left">First Platform to connect</p>
             <p data-aos="fade-right">Hawkers and Customers</p>
             <p data-aos="fade-left">directly</p>
-            <h4
-              data-aos="flip-right" className="btn"
-            >
-              <NavLink to="/About" id="order">
+              <div  className="HomeBtn">
+              <NavLink className="btn" to="/About" id="order">
                 About Us
               </NavLink>
-            </h4>
+              <NavLink className="btn"  to="/About" id="order2">
+                Our Services
+              </NavLink>
+              </div>
           </div>
           <div className="image">
             <img src={BanarImage} alt="Banner" data-aos="fade-left" />
