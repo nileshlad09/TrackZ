@@ -29,8 +29,8 @@ function Home() {
   };
   return (
     <>
-      <div id="Home" >
-        <header className="head" style={{ minHeight: "100vh" }}>
+      <div id="Home" className="BannerContainer">
+        <header className="head">
           <div className="h-text">
             <h2 >TrackZ</h2>
             <h1 data-aos="fade-right">
@@ -43,7 +43,7 @@ function Home() {
               <NavLink className="btn" to="/About" id="order">
                 About Us
               </NavLink>
-              <NavLink className="btn"  to="/About" id="order2">
+              <NavLink className="btn"  to="/Service" id="order2">
                 Our Services
               </NavLink>
               </div>
