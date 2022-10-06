@@ -19,18 +19,18 @@ const Navbar = () => {
     useEffect(() => {
         AOS.init({ duration: 1000 })
     }, [])
-
+console.log(window.location.hash);
 
     return (
         <div className="Navbar" id="Navbar">
             <Link to='Home' className="nav-logo"><span >TrackZ</span></Link>
             <div className={`nav-items ${isOpen && "open"}`}>
-                <NavLink to="/" onClick={() => setIsOpen(!isOpen)}>Home  </NavLink>
-                <NavLink to="/About" onClick={() => setIsOpen(!isOpen)}>About </NavLink>
-                <NavLink to="/Service" onClick={() => setIsOpen(!isOpen)}>Service </NavLink>
-                <NavLink to="/Contact" onClick={() => setIsOpen(!isOpen)}>Contact </NavLink>
-                <NavLink to="/SimpleUser" onClick={() => setIsOpen(!isOpen)}>SignUp</NavLink>
-                <NavLink to="/Notification" onClick={() => setIsOpen(!isOpen)}>
+                <NavLink exact to="/"   className={`${window.location.hash === "#/ "} : "active" ? ""`} onClick={() => setIsOpen(!isOpen)}>Home  </NavLink>
+                <NavLink to="/About" className={`${window.location.hash === "#/About"} : "active" ? ""`} onClick={() => setIsOpen(!isOpen)}>About </NavLink>
+                <NavLink to="/Service" className={`${window.location.hash === "#/Service"} : "active" ? ""`} onClick={() => setIsOpen(!isOpen)}>Service </NavLink>
+                <NavLink to="/Contact" className={`${window.location.hash === "#/Contact"} : "active" ? ""`} onClick={() => setIsOpen(!isOpen)}>Contact </NavLink>
+                <NavLink to="/SimpleUser"  onClick={() => setIsOpen(!isOpen)}>SignUp</NavLink>
+                <NavLink to="/Notification" className={`${window.location.hash === "#/Notification"} : "active" ? ""`} onClick={() => setIsOpen(!isOpen)}>
                     Notification<Badge badgeContent={4} color="primary">
                         <MailIcon color="white" />
                     </Badge>
