@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-scroll';
-import { MdContactPage } from 'react-icons/md'
-import { AiOutlineCustomerService } from 'react-icons/ai'
-import { FcAbout } from 'react-icons/fc'
-import { FcHome } from 'react-icons/fc'
-import { BiLogIn } from 'react-icons/bi'
+// import { MdContactPage } from 'react-icons/md'
+// import { AiOutlineCustomerService } from 'react-icons/ai'
+// import { FcAbout } from 'react-icons/fc'
+// import { FcHome } from 'react-icons/fc'
+// import { BiLogIn } from 'react-icons/bi'
 import './Navbar.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
