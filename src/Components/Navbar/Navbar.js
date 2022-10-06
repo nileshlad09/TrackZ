@@ -25,11 +25,11 @@ const Navbar = () => {
         <div className="Navbar" id="Navbar">
             <Link to='Home' className="nav-logo"><span >TrackZ</span></Link>
             <div className={`nav-items ${isOpen && "open"}`}>
-                <NavLink to="/TrackZ" onClick={() => setIsOpen(!isOpen)}>Home <i><FcHome /></i> </NavLink>
-                <NavLink to="/About" onClick={() => setIsOpen(!isOpen)}>About <i><FcAbout /></i></NavLink>
-                <NavLink to="/Service" onClick={() => setIsOpen(!isOpen)}>Service <i><AiOutlineCustomerService /></i></NavLink>
-                <NavLink to="/Contact" onClick={() => setIsOpen(!isOpen)}>Contact <i><MdContactPage /></i></NavLink>
-                <NavLink to="/SimpleUser" onClick={() => setIsOpen(!isOpen)}>SignUp<i><BiLogIn /></i></NavLink>
+                <NavLink to="/" onClick={() => setIsOpen(!isOpen)}>Home  </NavLink>
+                <NavLink to="/About" onClick={() => setIsOpen(!isOpen)}>About </NavLink>
+                <NavLink to="/Service" onClick={() => setIsOpen(!isOpen)}>Service </NavLink>
+                <NavLink to="/Contact" onClick={() => setIsOpen(!isOpen)}>Contact </NavLink>
+                <NavLink to="/SimpleUser" onClick={() => setIsOpen(!isOpen)}>SignUp</NavLink>
                 <NavLink to="/Notification" onClick={() => setIsOpen(!isOpen)}>
                     Notification<Badge badgeContent={4} color="primary">
                         <MailIcon color="white" />

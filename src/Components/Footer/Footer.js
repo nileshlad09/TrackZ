@@ -37,7 +37,7 @@ function Footer() {
         </div>
         <div className="footer-col">
           <h4 data-aos="flip-left">follow us</h4>
-          <div class="social-links">
+          <div className="social-links">
             <Link to="/"><i className="fab fa-facebook-f"  data-aos="fade-right"><FcGoogle/></i></Link>
             <Link to="/"><i className="fab fa-twitter"  data-aos="fade-left"><BsFacebook/></i></Link>
             <Link to="/"><i className="fab fa-instagram"  data-aos="fade-right"><AiFillInstagram/></i></Link>

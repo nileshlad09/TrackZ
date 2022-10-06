@@ -15,7 +15,6 @@ function About() {
             <img
               src={AboutUSImg}
               alt=""
-              srcset=""
             />
           </div>
           <div className="content-sections">
