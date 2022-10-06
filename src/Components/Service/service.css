@@ -7,6 +7,7 @@
     padding: 0 10px;
     width: 350px;
 }
+
 .ServiceContainer .viewBtn{
     background-color: white;
     padding: 8px 25px;
@@ -16,7 +17,7 @@
     text-decoration: none;
     font-weight: bold;
 }
-.css-83ijpv-MuiTypography-root{
+.ServiceContainer .subHeader{
     color: rgba(245, 245, 245, 0.695) !important;
 }
 .btn-disable{

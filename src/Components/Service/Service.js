@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
 import { data, data2 } from "./data";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 import './service.css'
 
 export default function RecipeReviewCard() {
@@ -34,12 +35,12 @@ export default function RecipeReviewCard() {
               >
                 <CardHeader
                   avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                    <Avatar sx={{ bgcolor: red[500] }} aria-label="">
                       {item.name.substring(0, 1)}
                     </Avatar>
                   }
                   title={item.name}
-                  subheader={item.service}
+                  subheader={<Typography className="subHeader"> {item.service}</Typography>}
                 />
                 <CardMedia
                   component="img"
@@ -72,7 +73,7 @@ export default function RecipeReviewCard() {
                     </Avatar>
                   }
                   title={item.name}
-                  subheader={item.service}
+                  subheader={<Typography className="subHeader"> {item.service}</Typography>}
                 />
                 <CardMedia
                   component="img"
