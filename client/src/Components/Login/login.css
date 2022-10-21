@@ -1,0 +1,20 @@
+.mainlogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.mainlogin .login{
+    width: 400px;
+    padding: 20px;
+}
+.mainlogin .form-label {
+    margin-bottom: 0 !important;
+    align-items: center;
+}
+.mainlogin h5{
+    margin-bottom: .2rem !important;
+}
+.mainlogin .btn{
+    width: 100%;
+}

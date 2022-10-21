@@ -4,18 +4,17 @@ export const data = [
     {
         iId: 4,
         Image: OldnewspaperCollector,
-        name: "Old Newspaper Collector",
+        name: "raddiwala",
+        service:"Service Avaliable",
+        class:"flip-left",
+    },
+    {
+        iId: 5,
+        Image: VegetableSeller,
+        name: "VegetableVendor",
         service:"Service Avaliable",
         class:"flip-left",
     }
 ]
-export const data2 = [
-    {
-        iId: 5,
-        Image: VegetableSeller,
-        name: "Vegetable Vendor",
-        service:"Coming Soon",
-        class:"flip-left",
-    }
-]
+
 

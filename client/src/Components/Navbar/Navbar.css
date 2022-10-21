@@ -13,9 +13,7 @@
   background-color: black;
   z-index: 1;
 }
-.Navbar .active{
-  border-bottom: 2px solid red;
-}
+
 
 
 .Navbar > .nav-logo {

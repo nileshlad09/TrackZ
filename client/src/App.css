@@ -1,0 +1,9 @@
+.form-label{
+  margin-bottom: 0 !important;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.form-label h5{
+  margin-bottom: 0 !important;
+}

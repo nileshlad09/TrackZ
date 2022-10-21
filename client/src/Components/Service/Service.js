@@ -8,7 +8,7 @@ import { red } from "@mui/material/colors";
 import { data, data2 } from "./data";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
-import './service.css'
+import "./service.css";
 
 export default function RecipeReviewCard() {
   return (
@@ -29,7 +29,7 @@ export default function RecipeReviewCard() {
           return (
             <>
               <Card
-              className="serviceCard"
+                className="serviceCard"
                 sx={{ maxWidth: 345, margin: "20px" }}
                 data-aos={item.class}
               >
@@ -40,40 +40,12 @@ export default function RecipeReviewCard() {
                     </Avatar>
                   }
                   title={item.name}
-                  subheader={<Typography className="subHeader"> {item.service}</Typography>}
-                />
-                <CardMedia
-                  component="img"
-                  height="194"
-                  image={item.Image}
-                  alt="Paella dish"
-                />
-                <CardActions disableSpacing>
-                  <div className="viewBtn">
-                    <Link className="btn2" to={"/View/" + item.name}>View</Link>
-                  </div>
-                </CardActions>
-              </Card>
-            </>
-          );
-        })}
-
-    {data2.map((item) => {
-          return (
-            <>
-              <Card
-              className="serviceCard"
-                sx={{ maxWidth: 345, margin: "20px" }}
-                data-aos={item.class}
-              >
-                <CardHeader
-                  avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                      {item.name.substring(0, 1)}
-                    </Avatar>
+                  subheader={
+                    <Typography className="subHeader">
+                      {" "}
+                      {item.service}
+                    </Typography>
                   }
-                  title={item.name}
-                  subheader={<Typography className="subHeader"> {item.service}</Typography>}
                 />
                 <CardMedia
                   component="img"
@@ -83,7 +55,10 @@ export default function RecipeReviewCard() {
                 />
                 <CardActions disableSpacing>
                   <div className="viewBtn">
-                    <Link className="btn2 btn-disable" >View</Link>
+                    <Link className="btn2" 
+                    to={localStorage.getItem("trackztoken") ? "/View/" + item.name :"/CommanLogin"}>
+                      View
+                    </Link>
                   </div>
                 </CardActions>
               </Card>
