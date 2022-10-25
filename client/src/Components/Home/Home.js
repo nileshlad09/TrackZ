@@ -13,7 +13,29 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import { Link } from "react-scroll";
 import Tooltip from "@mui/material/Tooltip";
 import BanarImage from "../images/BanarImage.png";
+
+import {useContext} from "react";
+import userContext from "../../context/user/userContext";
+
+
 function Home() {
+
+  const context = useContext(userContext);
+  const {  getUser, getUsersp, getNotification } = context;
+  useEffect(()=>{
+      console.log("useEffect in Home");
+      if (localStorage.getItem("trackzroll") === "cus") {
+          getUser();
+          getNotification()
+      }
+      else{
+        getUsersp();
+        getNotification()
+      }
+  }, []);
+
+
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);

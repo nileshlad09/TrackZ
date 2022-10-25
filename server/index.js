@@ -13,6 +13,7 @@ const PORT= 5000
 app.use('/api/userauth',require('./routes/userauth'))
 app.use('/api/hawkerauth',require('./routes/hawkerauth'))
 app.use('/api/hawkers',require('./routes/hawkers'))
+app.use('/api/alert',require('./routes/alert'))
     
 
 app.listen(PORT,()=>{

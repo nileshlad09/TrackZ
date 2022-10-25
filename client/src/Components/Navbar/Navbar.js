@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { NavLink} from "react-router-dom";
 import { Link } from "react-scroll";
 import "./Navbar.css";
-import AOS from "aos";
+// import AOS from "aos";
 import "aos/dist/aos.css";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import PersonIcon from '@mui/icons-material/Person';
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate  } from "react-router-dom";
+import userContext from "../../context/user/userContext";
 const Navbar = () => {
+  const context = useContext(userContext);
+  const { notification } = context;
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+  
 
   const logout = () => {
     localStorage.removeItem("trackztoken");
+    localStorage.removeItem("trackzroll");
     navigate("/CommanLogin");
   };
   return (
@@ -40,7 +41,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink to="/Notification" onClick={() => setIsOpen(!isOpen)}>
           Notification
-          <Badge badgeContent={4} color="primary">
+          <Badge badgeContent={notification.length} color="primary">
             <MailIcon color="white" />
           </Badge>
         </NavLink>

@@ -7,27 +7,52 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { BiMapPin } from "react-icons/bi";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import userContext from "../../context/user/userContext";
 
 export default function View() {
   const params = useParams();
   const name = params.name;
-  const noteInitial = []
-  const [hawkers, setHawkers] = useState(noteInitial)
-    const gethawkers= async()=>{
-      const response = await fetch(`http://localhost:5000/api/hawkers/allhawkers/${name}`, {
-        method: 'POST', 
+
+  const context = useContext(userContext);
+  const { user } = context;
+  // console.log(user);
+
+  const noteInitial = [];
+  const [hawkers, setHawkers] = useState(noteInitial);
+  const gethawkers = async () => {
+    const response = await fetch(
+      `http://localhost:5000/api/hawkers/allhawkers/${name}`,
+      {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      const json = await response.json()
-      setHawkers(json)
-    }
-useEffect(()=>{
-  gethawkers();
-},[])
-  console.log(hawkers);
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const json = await response.json();
+    setHawkers(json);
+  };
+  // console.log(hawkers);
+  useEffect(() => {
+    gethawkers();
+  }, []);
+
+  const sendAlert = async (id) => {
+    const response = await fetch(
+      `http://localhost:5000/api/alert/alert/${id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: user._id }),
+      }
+    );
+    const json = await response.json();
+    // console.log(json);
+  };
+
   return (
     <>
       <h3
@@ -50,50 +75,61 @@ useEffect(()=>{
           padding: "10px",
         }}
       >
-        { hawkers.map((h)=>{
-          return(<Card key={h._id} sx={{width:"300px", maxWidth: "100%", margin: "20px" }}>
-              <CardContent style={{
-          display:"flex",
-          justifyContent:"space-between"
-        }}>
+        {hawkers.map((h) => {
+          return (
+            <Card
+              key={h._id}
+              sx={{ width: "300px", maxWidth: "100%", margin: "20px" }}
+            >
+              <CardContent
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
                 <div>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  component="div"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "left",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  {h.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {h.city}
-                  <BiMapPin />
-                </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="div"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "left",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    {h.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {h.city}
+                    <BiMapPin />
+                  </Typography>
                 </div>
                 <div>
-                <Button size="small">4.5/5</Button>    
+                  <Button size="small">4.5/5</Button>
                 </div>
               </CardContent>
-              
+
               <CardActions>
                 <Stack
                   direction="row"
                   spacing={2}
                   style={{ marginLeft: "10px" }}
                 >
-                  <Button variant="outlined" color="error">
+                  <Button
+                    onClick={() => sendAlert(h._id)}
+                    variant="outlined"
+                    color="error"
+                  >
                     Alert
                   </Button>
                 </Stack>
               </CardActions>
-            </Card>)
+            </Card>
+          );
         })}
-     </div>
+      </div>
     </>
   );
 }

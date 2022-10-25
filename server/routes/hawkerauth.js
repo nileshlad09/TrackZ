@@ -25,7 +25,6 @@ router.post(
     try {
     // check whether user with this Phone Number exits already or not
       let user = await Hawker.findOne({ phone: req.body.phone });
-      console.log(user);
       if (user) {
         return res
           .status(400)
@@ -101,10 +100,20 @@ router.post('/login',[
 router.post('/getsp',fetchuser, async(req,res)=>{
   try {
    let userID = req.user.id;
-    const user = await Hawker.findById(userID).select("-password -__v -_id");
+    const user = await Hawker.findById(userID).select("-password -__v");
     res.send(user);
   } catch (error) {
     res.status(500).send("internal server Error")
+  }
+})
+
+//get user by id
+router.post('/getsp2/:id', async(req,res)=>{
+  try {
+    const user =await Hawker.findById(req.params.id).select("-password -__v");
+    res.send(user);
+  } catch (error) {
+    res.status(500).send(error)
   }
 })
 

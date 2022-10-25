@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import { red } from "@mui/material/colors";
-import { data, data2 } from "./data";
+import { data} from "./data";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import "./service.css";
@@ -31,6 +31,7 @@ export default function RecipeReviewCard() {
               <Card
                 className="serviceCard"
                 sx={{ maxWidth: 345, margin: "20px" }}
+                key={item.iId}
                 data-aos={item.class}
               >
                 <CardHeader

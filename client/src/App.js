@@ -5,7 +5,7 @@ import Admin from "./Components/Admin/Admin.js";
 import SimpleUser from "./Components/Signup/SimpleUser";
 import CommanLogin from "./Components/Login/CommanLogin";
 import View from "./Components/JS/View";
-import Notification from "./Components/JS/Notification";
+import Notification from "./Components/Notification/Notification";
 import ProfileService from "./Components/JS/ProfileService";
 import ProfileUser from "./Components/JS/ProfileUser";
 import About from "./Components/About/About";

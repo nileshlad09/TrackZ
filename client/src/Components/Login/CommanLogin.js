@@ -4,7 +4,11 @@ import { BsFillTelephonePlusFill } from "react-icons/bs";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useNavigate, NavLink } from "react-router-dom";
 import { RiCustomerService2Fill } from "react-icons/ri";
+  
 function CommanLogin() {
+
+
+
   const navigate = useNavigate();
   const [crediantial, setCrediential] = useState({});
 
@@ -30,6 +34,7 @@ function CommanLogin() {
       if (json.success) {
         localStorage.setItem("trackztoken", json.authToken);
         localStorage.setItem("trackzroll", "cus");
+        
         navigate("/");
       } else {
         console.log("user not found in customer");
