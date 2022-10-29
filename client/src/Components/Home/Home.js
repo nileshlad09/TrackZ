@@ -62,10 +62,10 @@ function Home() {
             <p data-aos="fade-right">Hawkers and Customers</p>
             <p data-aos="fade-left">directly</p>
               <div  className="HomeBtn">
-              <NavLink className="btn" to="/About" id="order">
+              <NavLink className="btn primary-btn" to="/About" id="order">
                 About Us
               </NavLink>
-              <NavLink className="btn"  to="/Service" id="order2">
+              <NavLink className="btn secondary-btn"  to="/Service" id="order2">
                 Our Services
               </NavLink>
               </div>

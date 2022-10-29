@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink} from "react-router-dom";
 import { Link } from "react-scroll";
 import "./Navbar.css";
@@ -9,9 +9,10 @@ import MailIcon from "@mui/icons-material/Mail";
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate  } from "react-router-dom";
 import userContext from "../../context/user/userContext";
+
 const Navbar = () => {
   const context = useContext(userContext);
-  const { notification } = context;
+  const { notification,showAlert } = context;
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   
@@ -19,6 +20,7 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("trackztoken");
     localStorage.removeItem("trackzroll");
+    showAlert("success","logout successfully")
     navigate("/CommanLogin");
   };
   return (
@@ -39,7 +41,7 @@ const Navbar = () => {
         <NavLink to="/Contact" onClick={() => setIsOpen(!isOpen)}>
           Contact{" "}
         </NavLink>
-        <NavLink to="/Notification" onClick={() => setIsOpen(!isOpen)}>
+        <NavLink  to={localStorage.getItem("trackztoken") ? "/Notification" :"/commanlogin"} onClick={() => setIsOpen(!isOpen)}>
           Notification
           <Badge badgeContent={notification.length} color="primary">
             <MailIcon color="white" />

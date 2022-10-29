@@ -15,7 +15,7 @@ export default function View() {
   const name = params.name;
 
   const context = useContext(userContext);
-  const { user } = context;
+  const { user,showAlert } = context;
   // console.log(user);
 
   const noteInitial = [];
@@ -50,9 +50,15 @@ export default function View() {
       }
     );
     const json = await response.json();
-    // console.log(json);
+    console.log(json);
+    if(json.success){
+      showAlert("success","alert send successfully");
+    }
+    else{
+      showAlert("danger","alert send alredy");
+    }
   };
-
+console.log(hawkers)
   return (
     <>
       <h3
@@ -99,15 +105,14 @@ export default function View() {
                       flexWrap: "wrap",
                     }}
                   >
-                    {h.name}
+                   {h.name}
+                   {" "}
+                   ({h.pinCode})
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     {h.city}
                     <BiMapPin />
                   </Typography>
-                </div>
-                <div>
-                  <Button size="small">4.5/5</Button>
                 </div>
               </CardContent>
 

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./login.css";
-import { BsFillTelephonePlusFill } from "react-icons/bs";
-import { RiLockPasswordFill } from "react-icons/ri";
 import { useNavigate, NavLink } from "react-router-dom";
-import { RiCustomerService2Fill } from "react-icons/ri";
-  
+import { useContext } from "react";
+import userContext from "../../context/user/userContext";
+
+
 function CommanLogin() {
-
-
-
+  const context = useContext(userContext);
+  const { showAlert } = context;
   const navigate = useNavigate();
   const [crediantial, setCrediential] = useState({});
 
@@ -34,10 +33,11 @@ function CommanLogin() {
       if (json.success) {
         localStorage.setItem("trackztoken", json.authToken);
         localStorage.setItem("trackzroll", "cus");
-        
+        showAlert("success","login successfully")
         navigate("/");
       } else {
         console.log("user not found in customer");
+        showAlert("danger","invalid crediantial")
       }
     } else if (crediantial.loginas === "serviceprovider") {
       console.log("serviceprovider");
@@ -59,132 +59,72 @@ function CommanLogin() {
       if (json.success) {
         localStorage.setItem("trackztoken", json.authToken);
         localStorage.setItem("trackzroll", "sp");
+        showAlert("success","login successfully")
         navigate("/");
       } else {
         console.log("user not found in service ");
+        showAlert("danger","invalid crediantial")
       }
     }
   };
 
   return (
-    <div className="mainlogin">
-      <div
-        style={{
-          backgroundColor: "#d8d6d6"
-        }}
-        className="login"
-      >
-        <h1
-          data-aos="fade-right"
-          style={{ textAlign: "center" }}
-          className="heading"
-        >
-          Login
-        </h1>
-        <div className="borders" data-aos="fade-left"></div>
-        <div
-          id="Contact"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div>
-            <form onSubmit={handleClick}>
-              <div className="mb-3">
-                <label
-                  className="form-label"
-                  style={{ display: "flex", textAlign: "center", gap: "10px" }}
-                >
-                  <h5>Login As</h5>
-                  <RiCustomerService2Fill />
-                </label>
-                <select
-                  id="service"
-                  style={{
-                    padding: "15px",
-                    border: "0px",
-                    outline: "none",
-                    width: "250px",
-                    height: "50px",
-                    borderRadius: "3.5px",
-                  }}
-                  onChange={onchange}
-                  value={crediantial.loginas}
-                  name="loginas"
-                  required
-                >
-                  <option value="" style={{ fontSize: "14px" }}>
-                    ---select---
-                  </option>
-                  <option value="serviceprovider" style={{ fontSize: "14px" }}>
-                    Service Provider
-                  </option>
-                  <option value="customer" style={{ fontSize: "14px" }}>
-                    customer
-                  </option>
-                </select>
-              </div>
-              <div className="mb-3">
-                <label
-                  className="form-label"
-                  style={{ display: "flex", textAlign: "center", gap: "10px" }}
-                >
-                  <h5>Phone Number</h5>
-                  <BsFillTelephonePlusFill />
-                </label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  style={{ height: "46px" }}
-                  placeholder="Enter Your Phone"
-                  name="phone"
-                  value={crediantial.phone}
-                  onChange={onchange}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label
-                  className="form-label"
-                  style={{ display: "flex", textAlign: "center", gap: "10px" }}
-                >
-                  <h5>Password</h5>
-                  <RiLockPasswordFill />
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="exampleInputPassword1"
-                  style={{ height: "46px" }}
-                  placeholder="Enter Your Password"
-                  name="password"
-                  value={crediantial.password}
-                  onChange={onchange}
-                  required
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Login
-              </button>
-            </form>
-            <div>
-              <h6 style={{ marginTop: "10px" }}>
-                {" "}
-                Sign Up As Service Provider<NavLink to="/Admin"> SignUp</NavLink>
-              </h6>
-              <h6 style={{ marginTop: "10px" }}>
-                {" "}
-                Sign Up As Customer<NavLink to="/SimpleUser"> SignUp</NavLink>
-              </h6>
+    <>
+      <div className="wrapper">
+        <div className="modalForm">
+          <h2>Login</h2>
+          <form action="" onSubmit={handleClick} className="form user userForm">
+            <div className="inputGroup">
+              <select
+                className="roll"
+                onChange={onchange}
+                value={crediantial.loginas}
+                name="loginas"
+                required
+              >
+                <option value="" style={{ fontSize: "14px" }}>
+                  ---select---
+                </option>
+                <option value="serviceprovider" style={{ fontSize: "14px" }}>
+                  Service Provider
+                </option>
+                <option value="customer" style={{ fontSize: "14px" }}>
+                  customer
+                </option>
+              </select>
             </div>
-          </div>
+            <div className="inputGroup">
+              <input
+                type="text"
+                placeholder="Enter Phone no."
+                name="phone"
+                value={crediantial.phone}
+                onChange={onchange}
+              />
+            </div>
+            <div className="inputGroup">
+              <input
+                type="password"
+                placeholder="Enter Password"
+                name="password"
+                value={crediantial.password}
+                onChange={onchange}
+              />
+            </div>
+            <button type="submit" className="submitBtn">
+              Login
+            </button>
+            <div className="member">
+              <h5>Not a Member?</h5>
+              <div>
+                <NavLink to="/Admin">Signup as Service Provider</NavLink>
+                <NavLink to="/SimpleUser">Signup as Customer </NavLink>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -87,8 +87,23 @@ const deleteAlert = async (id)=>{
 }
 
 
+const[alert,setAlert]=useState(null);
+  const  showAlert=(type,message)=>{
+    setAlert({
+      msg:message,
+      type:type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
+
+
+
+
+
   return (
-    <userContext.Provider value={{ user, notification, getUser, getNotification,getUsersp, deleteAlert }}>
+    <userContext.Provider value={{ user, notification,alert, getUser, getNotification,getUsersp, deleteAlert, showAlert }}>
       {props.children}
     </userContext.Provider>
   );

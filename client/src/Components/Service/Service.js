@@ -30,11 +30,12 @@ export default function RecipeReviewCard() {
             <>
               <Card
                 className="serviceCard"
-                sx={{ maxWidth: 345, margin: "20px" }}
+                sx={{ maxWidth: 345, margin: "20px"}}
                 key={item.iId}
                 data-aos={item.class}
               >
                 <CardHeader
+                className="header1"
                   avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="">
                       {item.name.substring(0, 1)}

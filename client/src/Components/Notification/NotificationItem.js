@@ -12,7 +12,7 @@ import userContext from "../../context/user/userContext";
 const NotificationItem = (props) => {
   const {n}= props;
   const context = useContext(userContext);
-  const { deleteAlert } = context;
+  const { deleteAlert, showAlert } = context;
 
   const [notification, setNotification] = useState([]);
   const roll = localStorage.getItem("trackzroll");
@@ -48,7 +48,9 @@ const NotificationItem = (props) => {
 
   const deleteAlert2 = ()=>{
     deleteAlert(n._id)
+    showAlert("success","Alert deleted successfully")
   }
+  console.log(notification.length) 
   return (
     <div>
       <ListItem alignItems="flex-start">
@@ -56,7 +58,7 @@ const NotificationItem = (props) => {
           <Avatar alt="Remy Sharp" />
         </ListItemAvatar>
         <ListItemText
-          primary={`${notification.name}  (PinCode:- ${notification.pinCode})`}
+          primary={`${notification.name}  (pincode:- ${notification.pinCode})`}
           secondary={
             <React.Fragment>
               <Typography

@@ -5,7 +5,7 @@ const router = express.Router();
 router.post('/allhawkers/:typeOfService', async(req,res)=>{
 
     try {
-      let hawkers = await Hawker.find({typeOfService:req.params.typeOfService}).select("name city");
+      let hawkers = await Hawker.find({typeOfService:req.params.typeOfService}).select("name city pinCode");
       res.json(hawkers)
       console.log(hawkers);
     } catch (error) {

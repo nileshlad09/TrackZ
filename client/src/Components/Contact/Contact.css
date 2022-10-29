@@ -6,55 +6,58 @@
   text-align: center;
   color: black;
 }
-.border {
-  width: 100px;
-  height: 10px;
-  background: #34495e;
-  margin: 40px auto;
-}
-
-.contact-form {
+.contact-section2{
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  overflow: hidden;
-  -webkit-box-shadow: -4px -2px 37px -4px rgba(0,0,0,1);
--moz-box-shadow: -4px -2px 37px -4px rgba(0,0,0,1);
-box-shadow: -4px -2px 37px -4px rgba(0,0,0,1);
 }
-
-.contact-form-text {
-  display: block;
+.contact-section .contact-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-form .input-box{
   width: 100%;
-  box-sizing: border-box;
-  margin: 16px 0;
-  border: 0;
-  /* background-color: brown; */
-  border: 2px solid black;
-  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  background-color: rgb(245, 245, 245);
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1em 1.5em;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
   outline: none;
-  color: black;
-  transition: 0.5s;
 }
-/* .contact-form-text:focus {
-  box-shadow: 0 0 10px 4px #34495e;
-} */
-textarea.contact-form-text {
+.contact-form textarea{
   resize: none;
-  height: 120px;
+  height: 200px;
 }
-.contact-form-btn {
-  float: right;
-  border: 0;
-  background-color: black;
-  color: #fff;
-  padding: 12px 50px;
-  border-radius: 20px;
+.contact-form-btn{
+  width: 150px;
+  padding: 1em;
+  margin: 1.2em 0;
+  border-radius: 40px;
+  border: 2px solid rgb(154, 162, 180);
+  outline: none;
+  background-color: rgb(247, 244, 244);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: 0.5s;
+  font-weight: 600;
+  font-size: 0.8em;
+  transition: all 0.3s ease-in-out;
 }
-.contact-form-btn:hover {
- border: 2px solid black;
- color: black;
- background-color: transparent;
+.contact-form-btn:hover{
+  background-color: rgb(78, 80, 85);
+  color: white;
+  border: 2px solid rgb(200, 200, 89);
+  transition: all 0.3s ease-in-out;
 }
