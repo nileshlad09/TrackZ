@@ -50,13 +50,13 @@ function Admin() {
         }
       );
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       if (json.success) {
         localStorage.setItem("trackztoken", json.authToken);
         localStorage.setItem("trackzroll", "sp");
         showAlert("success","account created successfully")
         navigate("/");
-        console.log("Account created succssfully");
+        // console.log("Account created succssfully");
       }
     }
     else{
@@ -98,7 +98,7 @@ function Admin() {
     try {
       const res = await result.confirm(otp);
       setResult2(res)
-      console.log(res);
+      // console.log(res);
       showAlert("success","otp verified successfully")
     } catch (err) {
       showAlert("danger","incorrect otp or otp expire")
@@ -240,7 +240,7 @@ function Admin() {
                       <option disabled selected>
                         --select--
                       </option>
-                      <option value="raddiwala">Raddiwala</option>
+                      <option value="ScrapCollector">Scrap Collector</option>
                       <option value="VegetableVendor">Vegetable Vendor</option>
                     </select>
                   </div>

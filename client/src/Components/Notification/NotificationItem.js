@@ -12,7 +12,7 @@ import userContext from "../../context/user/userContext";
 const NotificationItem = (props) => {
   const {n}= props;
   const context = useContext(userContext);
-  const { deleteAlert, showAlert } = context;
+  const { deleteAlert,setStatus, showAlert } = context;
 
   const [notification, setNotification] = useState([]);
   const roll = localStorage.getItem("trackzroll");
@@ -50,7 +50,16 @@ const NotificationItem = (props) => {
     deleteAlert(n._id)
     showAlert("success","Alert deleted successfully")
   }
-  console.log(notification.length) 
+
+  const accept= async ()=>{
+    showAlert("success","alert accepted successfully")
+    setStatus(n._id, "Accepted") 
+  }
+  const reject=()=>{
+    showAlert("success","alert Rejected")
+    setStatus(n._id, "Rejected")
+  }
+
   return (
     <div>
       <ListItem alignItems="flex-start">
@@ -58,7 +67,7 @@ const NotificationItem = (props) => {
           <Avatar alt="Remy Sharp" />
         </ListItemAvatar>
         <ListItemText
-          primary={`${notification.name}  (pincode:- ${notification.pinCode})`}
+          primary={`${notification.name}  (${notification.typeOfService?notification.typeOfService:notification.phone})`}
           secondary={
             <React.Fragment>
               <Typography
@@ -75,11 +84,33 @@ const NotificationItem = (props) => {
             </React.Fragment>
           }
         />
-        {(roll==="cus") &&
+        {/* <p style={{padding:"10px"}}>{format(notification.createdAt)}</p> */}
+        {/* {(roll==="cus") &&
           <Button variant="contained"  onClick={deleteAlert2}>
               Done
           </Button>
+        } */}
+        {(roll==="sp") &&
+        <>
+          <Button variant="contained" className="btn" color="success" sx={{ mr: 2 }} onClick={accept}>
+              Accept
+          </Button>
+          <Button variant="contained" className="btn" color="error" onClick={reject}>
+              reject
+          </Button>
+        </>
         }
+      
+      <div>
+        {(roll==="cus") &&
+         <h5>{n.status}</h5>
+        } 
+        {(n.status==="Rejected" && roll==="cus") &&
+          <Button variant="contained"  onClick={deleteAlert2}>
+             remove
+          </Button>
+         }
+      </div>
       </ListItem>
       <hr />
     </div>

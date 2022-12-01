@@ -15,6 +15,7 @@ router.post("/alert/:id", async (req, res) => {
     let alert2 = await Alert.create({
       alertTo: req.params.id,
       alertFrom: req.body.userId,
+      status:req.body.status
     });
     success = true;
     res.json({ success, alert2 });
@@ -57,6 +58,19 @@ router.delete('/deletealert/:id', async (req,res)=>{
   } catch (error) {
      console.error(error.message);
      res.status(500).send("some Error occured");      
+  }
+})
+
+router.post("/update/:id", async (req,res)=>{
+  try {
+   let alert = await Alert.findById(req.params.id)
+   if(!alert){
+     res.status(404).send("not found")
+   }
+   alert = await Alert.findByIdAndUpdate(req.params.id,{status:req.body.status2})
+   res.send(alert)
+  } catch (error) {
+   res.json({ error });
   }
 })
 

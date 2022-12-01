@@ -8,12 +8,11 @@ function ProfileUser() {
   const context = useContext(userContext);
   const { user, getUser, getUsersp } = context;
   useEffect(()=>{
-      console.log("useEffect in profile");
       if (localStorage.getItem("trackzroll") === "cus") {
           getUser();
       }
       else{
-        getUsersp();
+         getUsersp();
       }
   }, []);
   return (

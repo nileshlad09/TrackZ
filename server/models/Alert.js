@@ -3,11 +3,17 @@ const {Schema} = mongoose
 
 const AlertSchema = new Schema({
     alertTo:{
-        type:String
+        type:String,
+        required: true
     },
     alertFrom:{
-        type:String
+        type:String,
+        required: true
     },
+    status:{
+        type:String,
+        required: true
+    }
     
 },
 { timestamps: true })

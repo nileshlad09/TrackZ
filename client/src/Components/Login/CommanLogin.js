@@ -29,18 +29,18 @@ function CommanLogin() {
         }),
       });
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       if (json.success) {
         localStorage.setItem("trackztoken", json.authToken);
         localStorage.setItem("trackzroll", "cus");
         showAlert("success","login successfully")
         navigate("/");
       } else {
-        console.log("user not found in customer");
+        // console.log("user not found in customer");
         showAlert("danger","invalid crediantial")
       }
     } else if (crediantial.loginas === "serviceprovider") {
-      console.log("serviceprovider");
+      // console.log("serviceprovider");
       const response = await fetch(
         `http://localhost:5000/api/hawkerauth/login`,
         {
@@ -55,14 +55,14 @@ function CommanLogin() {
         }
       );
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       if (json.success) {
         localStorage.setItem("trackztoken", json.authToken);
         localStorage.setItem("trackzroll", "sp");
         showAlert("success","login successfully")
         navigate("/");
       } else {
-        console.log("user not found in service ");
+        // console.log("user not found in service ");
         showAlert("danger","invalid crediantial")
       }
     }
@@ -119,6 +119,7 @@ function CommanLogin() {
               <div>
                 <NavLink to="/Admin">Signup as Service Provider</NavLink>
                 <NavLink to="/SimpleUser">Signup as Customer </NavLink>
+                <NavLink to="/forgotpassword" style={{color:'red'}}>Forgot Password </NavLink>
               </div>
             </div>
           </form>

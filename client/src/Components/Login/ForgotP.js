@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "./signup.css";
+import "../Signup/signup.css";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import userContext from "../../context/user/userContext";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../fiberbase";
 
-function SimpleUser() {
+const ForgotP = () => {
+
   const [otp, setOtp] = useState("");
   const [result, setResult] = useState("");
   const [result2, setResult2] = useState("");
@@ -15,48 +16,67 @@ function SimpleUser() {
 
   const navigate = useNavigate();
   const [crediantial, setCrediantial] = useState({
-    name: "",
     phone: "",
     password: "",
-    address: "",
-    city: "",
-    pinCode: "",
+    loginas:""
   });
-  const handleclick = async (e) => {
-    e.preventDefault();
+
+
+const handleclick = async (e) => {
+  e.preventDefault();
+  if (crediantial.loginas === "customer") {
     if(result2){
     const response = await fetch(
-      `http://localhost:5000/api/userauth/createuser`,
+      `http://localhost:5000/api/userauth/forgotP`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: crediantial.name,
           phone: crediantial.phone,
-          password: crediantial.password,
-          address: crediantial.address,
-          city: crediantial.city,
-          pinCode: crediantial.pinCode,
+          password: crediantial.password
         }),
       }
     );
     const json = await response.json();
-    // console.log(json);
-    // console.log(crediantial);
     if (json.success) {
-      localStorage.setItem("trackztoken", json.authToken);
-      localStorage.setItem("trackzroll", "cus");
-      showAlert("success","account created successfully")
-      // console.log("Account created succssfully");
-      navigate("/");
+      showAlert("success","Password Change Successfully")
+      navigate("/commanlogin");
     }
   }
   else{
     showAlert("danger","Kindly verify mobile number")
   }
-}
+  } else if (crediantial.loginas === "serviceprovider") {
+    if(result2){
+      const response = await fetch(
+        `http://localhost:5000/api/hawkerauth/forgotP`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            phone: crediantial.phone,
+            password: crediantial.password
+          }),
+        }
+      );
+      const json = await response.json();
+      if (json.success) {
+        showAlert("success","Password Change Successfully")
+        navigate("/commanlogin");
+      }
+    }
+    else{
+      showAlert("danger","Kindly verify mobile number")
+    }
+
+  }
+};
+
+
 
   const onchange = (e) => {
     setCrediantial({ ...crediantial, [e.target.name]: e.target.value });
@@ -99,39 +119,35 @@ function SimpleUser() {
   };
 
   return (
-    <>
+    <div>
       <div className="signupContainer">
         <div className="container">
-          <header>Customer</header>
+          <header>Forgot Password</header>
 
           <form onSubmit={handleclick}>
             <div className="form first">
               <div className="details personal">
-                <span className="title">Personal Details</span>
-
                 <div className="fields">
-                  <div className="input-field">
-                    <label>Full Name</label>
-                    <div className="input-field2">
-                      <input
-                        type="text"
-                        placeholder="Enter your name"
-                        required
-                        name="name"
-                        value={crediantial.name}
-                        onChange={onchange}
-                      />
-                    </div>
-                  </div>
-                  <div className="input-field">
-                    <label>Password</label>
-                    <div className="input-field2">
-                      <input type="password" placeholder="Password" required 
-                      name="password"
-                      value={crediantial.password}
-                      onChange={onchange}/>
-                    </div>
-                  </div>
+                <div className="input-field">
+                <label>Select</label>
+              <select
+                className="roll"
+                onChange={onchange}
+                value={crediantial.loginas}
+                name="loginas"
+                required
+              >
+                <option value="" style={{ fontSize: "14px" }}>
+                  ---select---
+                </option>
+                <option value="serviceprovider" style={{ fontSize: "14px" }}>
+                  Service Provider
+                </option>
+                <option value="customer" style={{ fontSize: "14px" }}>
+                  customer
+                </option>
+              </select>
+            </div>
                   <div className="input-field">
                     <label>Mobile Number</label>
                     <div className="input-field2">
@@ -163,55 +179,33 @@ function SimpleUser() {
                       <button className="verify" onClick={verify}>verify</button>
                     </div>
                   </div>
-                  
                   <div className="input-field">
-                    <label>Address</label>
+                    <label>New Password</label>
                     <div className="input-field2">
-                      <input type="text" placeholder="Enter address" required 
-                      name="address"
-                      value={crediantial.address}
+                      <input type="password" placeholder="New Password" required 
+                      name="password"
+                      value={crediantial.password}
                       onChange={onchange}/>
                     </div>
-                  </div>
-                  <div className="input-field">
-                    <label>City</label>
-                    <div className="input-field2">
-                      <input type="text" placeholder="Enter city name" required
-                      name="city"
-                      value={crediantial.city}
-                      onChange={onchange} />
-                    </div>
-                  </div>
-                  <div className="input-field">
-                    <label>Pincode</label>
-                    <div className="input-field2">
-                      <input
-                        type="number"
-                        placeholder="Enter Issued Date"
-                        required
-                        name="pinCode"
-                        value={crediantial.pinCode}
-                        onChange={onchange}
-                      />
-                    </div>
-                  </div>
+                  </div>  
                 </div>
+
               </div>
 
               <button className="sumbit">
-                <span className="btnText">Sign Up</span>
+                <span className="btnText">Change Password</span>
                 <i className="uil uil-navigator"></i>
               </button>
               <h5 className="alreadyhave">
-                    Already have account?{" "}
-                    <NavLink to="/commanlogin">Login</NavLink>{" "}
-                  </h5>
+                    Don't have account?
+                <NavLink to="/commanlogin">Create account</NavLink>{" "}
+              </h5>
             </div>
           </form>
         </div>
       </div>
-    </>
-  );
+    </div>
+  )
 }
 
-export default SimpleUser;
+export default ForgotP

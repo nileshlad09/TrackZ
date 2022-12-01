@@ -6,7 +6,7 @@ const UserState = (props) => {
   const roll = localStorage.getItem("trackzroll");
   const [notification, setNotification] = useState([]);
   const [user, setUser] = useState(userInitial);
-  console.log(roll);
+  // console.log(roll);
 
   const getUser = async () => {
       const response = await fetch(
@@ -21,7 +21,18 @@ const UserState = (props) => {
       );
       const json = await response.json();
       setUser(json);
-      console.log(json);
+      const response2 = await fetch(
+        `http://localhost:5000/api/alert/getalert2/${json._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+        const json2 = await response2.json();
+        setNotification(json2);
+        console.log(json2);
     }
 
     const getUsersp = async ()=>{
@@ -37,37 +48,50 @@ const UserState = (props) => {
       );
       const json = await response.json();
       setUser(json);
+      const response2 = await fetch(
+              `http://localhost:5000/api/alert/getalert/${json._id}`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const json2 = await response2.json();
+            setNotification(json2);
+
   }
 
-const getNotification = async()=>{
-  if(localStorage.getItem("trackzroll") === 'cus'){
-    const response2 = await fetch(
-      `http://localhost:5000/api/alert/getalert2/${user._id}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-      const json2 = await response2.json();
-      setNotification(json2);
-  }
-  else{
-    const response2 = await fetch(
-      `http://localhost:5000/api/alert/getalert/${user._id}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const json2 = await response2.json();
-    setNotification(json2);
-    console.log(json2);
-    } 
-}
+// const getNotification = async()=>{
+//   if(localStorage.getItem("trackzroll") === 'cus'){
+//     const response2 = await fetch(
+//       `http://localhost:5000/api/alert/getalert2/${user._id}`,
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+//       const json2 = await response2.json();
+//       setNotification(json2);
+//       console.log(json2);
+//   }
+//   else{
+//     const response2 = await fetch(
+//       `http://localhost:5000/api/alert/getalert/${user._id}`,
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+//     const json2 = await response2.json();
+//     setNotification(json2);
+//     } 
+// }
+
 
 
 const deleteAlert = async (id)=>{
@@ -80,10 +104,21 @@ const deleteAlert = async (id)=>{
     }
   );
   const json = await response.json();
-  console.log(json)
   const newnote = notification.filter((note)=>{return note._id!==id});
   setNotification(newnote)
-  console.log("deleted");
+}
+
+const setStatus = async (id, Ustatus)=>{
+  const response = await fetch(`http://localhost:5000/api/alert/update/${id}`,
+    {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status2:Ustatus}),
+    }
+  );
+  const json = await response.json();
 }
 
 
@@ -103,7 +138,7 @@ const[alert,setAlert]=useState(null);
 
 
   return (
-    <userContext.Provider value={{ user, notification,alert, getUser, getNotification,getUsersp, deleteAlert, showAlert }}>
+    <userContext.Provider value={{ user, notification,alert, getUser,getUsersp,setStatus, deleteAlert, showAlert }}>
       {props.children}
     </userContext.Provider>
   );

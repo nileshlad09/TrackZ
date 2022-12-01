@@ -96,6 +96,36 @@ router.post('/login',[
   }
 })
 
+router.post("/forgotP", 
+[
+  body("phone","invalid phone number").isLength({ min: 10, max: 10 }),
+  body('password').isLength({min:8,max:15})
+],
+async (req,res)=>{
+  const error = validationResult(req)
+  if(!error.isEmpty()){
+    return res.status(400).json({error:error.array()})
+  }
+  try {
+   let user = await Hawker.findOne({phone:req.body.phone})
+   if(!user){
+     res.status(404).send("not found")
+   }
+   user = await Hawker.findOne({phone: req.body.phone})
+
+   const salt =await bcrypt.genSalt(10);
+   secPass = await bcrypt.hash(req.body.password,salt)
+    await Hawker.updateOne({password:secPass})
+    success= true
+   res.json({success});
+  } catch (error) {
+   res.json({ error });
+  }
+})
+
+
+
+
 //get specific serviceprovider
 router.post('/getsp',fetchuser, async(req,res)=>{
   try {

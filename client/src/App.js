@@ -14,12 +14,15 @@ import Contact from "./Components/Contact/Contact";
 import Alert from "./Components/JS/Alert"
 import {Route, Routes } from "react-router-dom";
 import UserState from "./context/user/UserState";
-import {useState} from 'react'
 import Payment from "./Components/Payment/Payment";
-function App() {
+import ForgotP from "./Components/Login/ForgotP";
 
+
+function App() {
+  
   return (
     <>
+
 
     <UserState>
         <Navbar />
@@ -37,6 +40,7 @@ function App() {
           <Route exact path="/ProfileService" element={<ProfileService />} />
           <Route exact path="/ProfileUser" element={<ProfileUser />} />
           <Route exact path="/Payment" element={<Payment />} />
+          <Route exact path="/Forgotpassword" element={<ForgotP/>} />
         </Routes>
         </UserState>
     </>

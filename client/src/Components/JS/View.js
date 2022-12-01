@@ -1,11 +1,4 @@
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { BiMapPin } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import userContext from "../../context/user/userContext";
@@ -15,7 +8,7 @@ export default function View() {
   const name = params.name;
 
   const context = useContext(userContext);
-  const { user,showAlert } = context;
+  const { user, showAlert } = context;
   // console.log(user);
 
   const noteInitial = [];
@@ -33,7 +26,6 @@ export default function View() {
     const json = await response.json();
     setHawkers(json);
   };
-  // console.log(hawkers);
   useEffect(() => {
     gethawkers();
   }, []);
@@ -46,21 +38,20 @@ export default function View() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: user._id }),
+        body: JSON.stringify({ userId: user._id , status: "Sent"}),
       }
     );
     const json = await response.json();
-    console.log(json);
-    if(json.success){
-      showAlert("success","alert send successfully");
-    }
-    else{
-      showAlert("danger","alert send alredy");
+    // console.log(json);
+    if (json.success) {
+      showAlert("success", "alert send successfully");
+    } else {
+      showAlert("danger", "alert send alredy");
     }
   };
-console.log(hawkers)
+  // console.log(hawkers);
   return (
-    <>
+    hawkers && <>
       <h3
         style={{
           textAlign: "center",
@@ -71,70 +62,46 @@ console.log(hawkers)
       >
         {name}
       </h3>
+       
       <div
+        className="Viewcontainer"
         style={{
-          marginTop: "20px",
           display: "flex",
-          alignItems: "center",
           justifyContent: "center",
-          flexWrap: "wrap",
-          padding: "10px",
+          // flexWrap: "wrap",
+          gap: "30px",
+          marginTop:"90px"
         }}
+        
       >
         {hawkers.map((h) => {
           return (
-            <Card
-              key={h._id}
-              sx={{ width: "300px", maxWidth: "100%", margin: "20px" }}
-            >
-              <CardContent
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <Typography
-                    gutterBottom
-                    variant="h6"
-                    component="div"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "left",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                   {h.name}
-                   {" "}
-                   ({h.pinCode})
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {h.city}
-                    <BiMapPin />
-                  </Typography>
-                </div>
-              </CardContent>
-
-              <CardActions>
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  style={{ marginLeft: "10px" }}
-                >
-                  <Button
-                    onClick={() => sendAlert(h._id)}
-                    variant="outlined"
-                    color="error"
-                  >
-                    Alert
-                  </Button>
-                </Stack>
-              </CardActions>
-            </Card>
-          );
-        })}
-      </div>
+        <div
+          className="card"
+          style={{
+            margin: "5px",
+            outline: "none",
+            boxShadow: "rgba(0, 0, 0, 0.15) 0px 2px 8px",
+            width: "20rem",
+          }}
+          key={h._id}
+        >
+          <div className="card-body">
+            <h5 className="card-title">{h.name.charAt(0).toUpperCase() + h.name.slice(1)}</h5>
+            <p className="card-text">
+              City: {h.city}
+              <br />
+              Pin Code: {h.pinCode}
+            </p>
+            {localStorage.getItem('trackzroll')==="cus" &&
+            <button style={{marginRight: "43%"}} className="btn btn-primary"
+                onClick={() => sendAlert(h._id)}>Alert</button>
+        }
+          </div>
+        </div>
+      );
+    })}
+    </div>
     </>
   );
 }

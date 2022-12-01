@@ -4,7 +4,7 @@ export const data = [
     {
         iId: 4,
         Image: OldnewspaperCollector,
-        name: "raddiwala",
+        name: "ScrapCollector",
         service:"Service Avaliable",
         class:"flip-left",
     },

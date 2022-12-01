@@ -8,11 +8,17 @@ import { useEffect } from "react";
 
 export default function Notification() {
   const context = useContext(userContext);
-  const { notification, getNotification } = context;
+  const { notification } = context;  
+  const { getUser, getUsersp } = context;
   useEffect(()=>{
-      getNotification()
-    console.log("useEffect in notification")
-  },[])
+    if (localStorage.getItem("trackzroll") === "cus") {
+        getUser();
+    }
+    else{
+       getUsersp();
+    }
+  }, []);
+  
   return (
     <List
       sx={{
@@ -21,14 +27,16 @@ export default function Notification() {
         bgcolor: "background.paper",
         margin: "auto",
       }}
-    >
-      {notification.map((n) => {
-        return (
-          <>
-          <NotificationItem key={n._id} n={n}/>
-          </>
-        );
-      })}
+    > 
+         {
+         notification.length > 0 ? notification.map((n) => {
+            return(
+              <NotificationItem key={n._id} n={n}/>
+            )
+          }):
+            <h3 style={{textAlign:"center"}}>No notification found</h3>
+          }
+      
     </List>
   );
 }

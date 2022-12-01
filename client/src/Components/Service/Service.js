@@ -13,7 +13,7 @@ import "./service.css";
 export default function RecipeReviewCard() {
   return (
     <div className="ServiceContainer" id="Service">
-      <h1 data-aos="flip-left" style={{ margin: "20px", textAlign: "center" }}>
+      <h1  style={{ margin: "20px", textAlign: "center" }}>
         OUR SERVICE
       </h1>
       <div
@@ -31,8 +31,8 @@ export default function RecipeReviewCard() {
               <Card
                 className="serviceCard"
                 sx={{ maxWidth: 345, margin: "20px"}}
-                key={item.iId}
-                data-aos={item.class}
+                key={item.toString()}
+                // data-aos={item.class}
               >
                 <CardHeader
                 className="header1"

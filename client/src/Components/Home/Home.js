@@ -23,14 +23,11 @@ function Home() {
   const context = useContext(userContext);
   const {  getUser, getUsersp, getNotification } = context;
   useEffect(()=>{
-      console.log("useEffect in Home");
       if (localStorage.getItem("trackzroll") === "cus") {
           getUser();
-          getNotification()
       }
       else{
-        getUsersp();
-        getNotification()
+         getUsersp();
       }
   }, []);
 
